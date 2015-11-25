@@ -1,0 +1,2 @@
+test -f ~/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE} || zsh -f /usr/share/zsh/functions/Misc/zkbd
+source ~/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}

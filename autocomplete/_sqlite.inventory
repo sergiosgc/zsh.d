@@ -1,0 +1,310 @@
+#compdef sqlite.inventory
+
+_sqlite.inventory() {
+ typeset -A opt_args
+ local context state line curcontext="$curcontext"
+ _arguments -C \
+    '1: :_cmd_list' \
+    '*::arg:->args' \
+    && ret=0
+ case "$state" in
+     (args)
+         case "$words[1]" in
+             (host) 
+                 _sqlite.inventory_host
+                 ret=$?
+                 ;;
+             (host_group) 
+                 _sqlite.inventory_host_group
+                 ret=$?
+                 ;;
+             (service) 
+                 _sqlite.inventory_service
+                 ret=$?
+                 ;;
+             (service_instance) 
+                 _sqlite.inventory_service_instance
+                 ret=$?
+                 ;;
+         esac
+         ;;
+
+ esac
+ return ret
+}
+_cmd_list() {
+  local commands; commands=(
+    'host:change hosts'
+    'host_group:change host groups'
+    'service:edit services'
+    'service_instance:edit service instances'
+  )
+  _describe -t general-commands 'top command' commands "$@"
+}
+_sqlite.inventory_host() {
+ typeset -A opt_args
+ local context state line
+ _arguments -C \
+    '1: :_cmd_list_host' \
+    '*::arg:->args' \
+    && ret=0
+ case "$state" in
+     (args)
+         case "$words[1]" in
+             (add) 
+                 _arguments -C \
+                     '1: :_host_list'  \
+                 && ret=0
+                 ret=$?
+                 ;;
+             (delete|get_groups|get_variables|set_groups) 
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (add_group|remove_group)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    '2: :_inventory_group_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_variable)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    '2: :_inventory_host_variable_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+         esac
+         ;;
+
+ esac
+ return ret
+}
+_sqlite.inventory_host_group() {
+ typeset -A opt_args
+ local context state line
+ _arguments -C \
+    '1: :_cmd_list_host_group' \
+    '*::arg:->args' \
+    && ret=0
+ case "$state" in
+     (args)
+         case "$words[1]" in
+             (delete|get_variables) 
+                 _arguments -C \
+                    '1: :_inventory_host_group_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_parent)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_group_list'  \
+                    '2: :_inventory_host_group_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_variable)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_group_list'  \
+                    '2: :_inventory_host_group_variable_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+         esac
+         ;;
+
+ esac
+ return ret
+}
+_sqlite.inventory_service() {
+ typeset -A opt_args
+ local context state line
+ _arguments -C \
+    '1: :_cmd_list_service' \
+    '*::arg:->args' \
+    && ret=0
+ case "$state" in
+     (args)
+         case "$words[1]" in
+             (delete|list|get_variables) 
+                 _arguments -C \
+                    '1: :_inventory_service_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_parent)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_service_list'  \
+                    '2: :_inventory_service_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_variable)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_service_list'  \
+                    '2: :_inventory_service_variable_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+         esac
+         ;;
+
+ esac
+ return ret
+}
+_sqlite.inventory_service_instance() {
+ typeset -A opt_args
+ local context state line
+ _arguments -C \
+    '1: :_cmd_list_service_instance' \
+    '*::arg:->args' \
+    && ret=0
+ case "$state" in
+     (args)
+         case "$words[1]" in
+             (add|update) 
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    '2: :_inventory_service_list'  \
+                    '3:Local Name:'  \
+                    '4:IP:'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (delete|get_variables) 
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    '2: :_inventory_service_list'  \
+                    '3:Local Name:'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (list_by_host)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (list_by_service)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_service_list'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+             (set_variable)
+                 echo $words[2] "--"
+                 _arguments -C \
+                    '1: :_inventory_host_list'  \
+                    '2: :_inventory_service_list'  \
+                    '3:Local Name:'  \
+                    '4: :_inventory_service_instance_variable_list'  \
+                    '5:JSON value:'  \
+                    && ret=0
+                 ret=$?
+                 ;;
+         esac
+         ;;
+
+ esac
+ return ret
+}
+_cmd_list_host() {
+  local commands; commands=(
+    'add:add host'
+    'delete:delete host'
+    'set_variable:set host variable'
+    'get_variables:list host variables and their values'
+    'set_groups:reset list of host group membership'
+    'add_group:add host to a group'
+    'remove_group:remove host from a group'
+    'get_groups:list groups host belongs to'
+  )
+  _describe -t general-commands 'host command' commands "$@"
+}
+_cmd_list_host_group() {
+  local commands; commands=(
+    'add:add host group'
+    'delete:delete host group'
+    'list:list host groups'
+    'set_variable:set host group variable'
+    'get_variables:list host group variables and their values'
+    'set_parent:set host group parent group'
+  )
+  _describe -t general-commands 'host group command' commands "$@"
+}
+_cmd_list_service() {
+  local commands; commands=(
+    'add:add service'
+    'delete:delete service'
+    'list:list services'
+    'set_variable:set service variable'
+    'get_variables:list service variables and their values'
+    'set_parent:set service parent service'
+  )
+  _describe -t general-commands 'service command' commands "$@"
+}
+_cmd_list_service_instance() {
+  local commands; commands=(
+    'add:add service instance'
+    'update:update service instance'
+    'delete:delete service instance'
+    'list:list service instances'
+    'list_by_host:list service instances for a host'
+    'list_by_service:list service instances for a service'
+    'set_variable:set service instance variable'
+    'get_variables:list service instance variables and their values'
+  )
+  _describe -t general-commands 'service_instance command' commands "$@"
+}
+_sqlite.inventory_host_delete() {
+ typeset -A opt_args
+ local context state line
+ _arguments -C \
+    '1: :_inventory_host_list'  \
+    && ret=0
+ return ret
+}
+_inventory_host_list() {
+ compadd $(sqlite.inventory host list | paste -s -d ' ')
+}
+_inventory_group_list() {
+ compadd $(sqlite.inventory host_group list | paste -s -d ' ')
+}
+_host_list() {
+ compadd $(cat /etc/hosts | sed -e 's/#.*//' -e 's/\s\s*/ /g' | cut -d ' ' -f 2 | sort | uniq | grep -v '^$' | paste -s -d ' ')
+}
+_inventory_host_variable_list() {
+ compadd $(sqlite.inventory host used_variables | paste -s -d ' ')
+}
+_inventory_host_group_list() {
+ compadd $(sqlite.inventory host_group list | paste -s -d ' ')
+}
+_inventory_host_group_variable_list() {
+ compadd $(sqlite.inventory host_group used_variables | paste -s -d ' ')
+}
+_inventory_service_list() {
+ compadd $(sqlite.inventory service list | paste -s -d ' ')
+}
+_inventory_service_variable_list() {
+ compadd $(sqlite.inventory service used_variables | paste -s -d ' ')
+}
+_inventory_service_instance_list() {
+ compadd $(sqlite.inventory service_instance list | paste -s -d ' ')
+}
+_inventory_service_instance_variable_list() {
+ compadd $(sqlite.inventory service_instance used_variables | paste -s -d ' ')
+}
+
+_sqlite.inventory "$@"
+#compadd a b c d
