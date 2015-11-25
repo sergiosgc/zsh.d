@@ -3,7 +3,7 @@ This is my zsh config. There are many like it, but this is one is mine.
 
 Nevertheless, feel free to use it as you wish. You will need to customize it for you. It is designed for this to be easy.
 
-First, edit the zshrc file, find the line that sources antigen and point it to your path.
+First, edit the zshrc file, find the line that sources antigen and point it to your antigen install path.
 
 Now, move all files in the env, rc and antigen_bundles directories away to a review directory (in your temp path).
 
