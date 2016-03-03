@@ -104,7 +104,7 @@ setopt long_list_jobs       # list jobs in long format
 setopt magic_equal_subst    # foo= is file expanded
 setopt no_mail_warning      # auto-explained
 setopt mark_dirs            # adds / on dirs in filename completion
-setopt menu_complete        # show menu on ambiguous completion
+setopt no_menu_complete        # show menu on ambiguous completion
 setopt monitor              # job control
 setopt multios              # multi redirection allowed
 setopt nomatch              # print error on non matched patterns
@@ -140,7 +140,7 @@ setopt no_share_history     # Independent history per session
 setopt no_sh_file_expansion # dont expand filnames first
 setopt no_sh_glob           # allow globbing with [(|)<]
 setopt no_sh_nullcmd        # use my NULLCMD
-setopt sh_option_letters    # interprete single option letters a la ksh
+setopt no_sh_option_letters # do not interpret single option letters a la ksh
 setopt short_loops          # short loops
 setopt no_sh_word_split     # `s="a b"; a=($s)' => array of length 1, not 2
 setopt no_single_line_zle   # use multiline editor

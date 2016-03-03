@@ -3,6 +3,7 @@ alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cres
 alias ssh="TERM=xterm ssh"
 alias tn="task unblocked limit:1"
 alias ta="task add"
+alias sqlite="rlwrap sqlite3"
 function td() {
     task $1 done
 }
