@@ -16,6 +16,7 @@ for bundle in ~/.zsh.d/antigen_bundles/*[^~]
 do
     antigen bundle "$(basename "$bundle" | sed 's/\\/\//')"
 done
+[ -n "$ZSH_THEME" ] && antigen theme "$ZSH_THEME"
 antigen apply
 # .zsh.d/rc
 for zshrc_snipplet in ~/.zsh.d/rc/S[0-9][0-9]*[^~]
