@@ -1,1 +1,2 @@
 /usr/bin/ssh-add ~/.ssh/id_dsa
+/usr/bin/ssh-add ~/.ssh/id_rsa
