@@ -10,7 +10,7 @@ do
     export $(basename $env_snipplet)="$(eval "echo $(cat $env_snipplet)")"
 done
 # Antigen
-source ~/Projects/Personal/dotfiles/antigen/antigen.zsh
+source ~/.antigen.git/antigen.zsh
 antigen use oh-my-zsh
 for bundle in ~/.zsh.d/antigen_bundles/*[^~]
 do
