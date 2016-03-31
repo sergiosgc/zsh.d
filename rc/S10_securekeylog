@@ -2,6 +2,6 @@
 
 # Secure the personal temp dir and SSL keylog file (SSL session key log, usable in wireshark to dump HTTPS sessions)
 mkdir -p /tmp/sergio.tmp
-chown sergio /tmp/sergio.tmp
+chown $(whoami) /tmp/sergio.tmp
 chmod 0700 /tmp/sergio.tmp
 [ -f /tmp/sergio.tmp/sslkeylog.log ] && chmod 0600 /tmp/sergio.tmp/sslkeylog.log
