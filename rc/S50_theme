@@ -2,7 +2,8 @@
 # Note to self: You can get a list of all available colors with:
 #for COLOR in {0..255} ; do; for STYLE in "38;5"; do; TAG="\033[${STYLE};${COLOR}m"; STR="${STYLE};${COLOR}"; echo -ne "${TAG}${STR}${NONE}  "; done; echo; done 
 
-PROMPT="%{[01;34m%}%n@%(!.%{[01;31m%}.%{[01;32m%})%m%{%b%s%u[00m%}:%2c%{%b%s%u[00m%}%(?.%{%b%s%u[00m%}.%{[01;31m%}) %(!.#.>) %{%b%s%u[00m%}"
+PROMPT="%{[01;34m%}%n@%(!.%{[01;31m%}.%{[01;31m%})%m%{%b%s%u[00m%}:%2c%{%b%s%u[00m%}%(?.%{%b%s%u[00m%}.%{[01;31m%}) %(!.#.>) %{%b%s%u[00m%}"
+[ "$(hostname)" = "sergio-laptop" ] && PROMPT="%{[01;34m%}%n@%(!.%{[01;31m%}.%{[01;32m%})%m%{%b%s%u[00m%}:%2c%{%b%s%u[00m%}%(?.%{%b%s%u[00m%}.%{[01;31m%}) %(!.#.>) %{%b%s%u[00m%}"
 #GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=32:ln=32:bn=32:se=36"
 function zle-line-init zle-keymap-select () {
  RPROMPT="[$KEYMAP]"
