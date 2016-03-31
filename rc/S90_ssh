@@ -1,2 +1,2 @@
-/usr/bin/ssh-add ~/.ssh/id_dsa
-/usr/bin/ssh-add ~/.ssh/id_rsa
+[ -f ~/.ssh/id_dsa ] && /usr/bin/ssh-add ~/.ssh/id_dsa
+[ -f ~/.ssh/id_rsa ] && /usr/bin/ssh-add ~/.ssh/id_rsa
