@@ -10,6 +10,11 @@ for env_snippet in ~/.zsh.d/env/*[^~]
 do
     export $(basename $env_snippet)="$(eval "echo $(cat $env_snippet)")"
 done
+# .zsh.d/alias
+for alias_snippet in ~/.zsh.d/alias/*[^~]
+do
+    alias $(basename $alias_snippet)="$(cat $alias_snippet)"
+done
 # Antigen
 source ~/.antigen.git/antigen.zsh
 antigen use oh-my-zsh
