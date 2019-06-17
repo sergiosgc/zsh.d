@@ -1,3 +1,4 @@
+export ZSH=~/.antigen/bundles/robbyrussell/oh-my-zsh
 # .zsh.d/functions
 fpath=(~/.zsh.d/autocomplete ~/.zsh.d/functions $fpath)
 for f in ~/.zsh.d/autocomplete/*[^~] ~/.zsh.d/functions/*[^~]
