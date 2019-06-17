@@ -16,7 +16,12 @@ do
     alias $(basename $alias_snippet)="$(cat $alias_snippet)"
 done
 # Antigen
-source ~/.antigen.git/antigen.zsh
+if [ -f ~/.antigen.git/antigen.zsh ]
+then
+    source ~/.antigen.git/antigen.zsh
+else
+    source /usr/share/zsh-antigen/antigen.zsh
+fi
 antigen use oh-my-zsh
 for bundle in ~/.zsh.d/antigen_bundles/*[^~]
 do
