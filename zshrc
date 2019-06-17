@@ -6,9 +6,9 @@ do
     autoload $f
 done
 # .zsh.d/env
-for env_snipplet in ~/.zsh.d/env/*[^~]
+for env_snippet in ~/.zsh.d/env/*[^~]
 do
-    export $(basename $env_snipplet)="$(eval "echo $(cat $env_snipplet)")"
+    export $(basename $env_snippet)="$(eval "echo $(cat $env_snippet)")"
 done
 # Antigen
 source ~/.antigen.git/antigen.zsh
@@ -20,7 +20,7 @@ done
 [ -n "$ZSH_THEME" ] && antigen theme "$ZSH_THEME"
 antigen apply
 # .zsh.d/rc
-for zshrc_snipplet in ~/.zsh.d/rc/S[0-9][0-9]*[^~]
+for zshrc_snippet in ~/.zsh.d/rc/S[0-9][0-9]*[^~]
 do
-    source $zshrc_snipplet
+    source $zshrc_snippet
 done
