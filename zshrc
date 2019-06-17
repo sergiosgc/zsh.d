@@ -9,7 +9,7 @@ do
     autoload $f
 done
 # .zsh.d/env
-for env_snipplet in ${ZSHD}/env/*[^~]
+for env_snippet in ${ZSHD}/env/*[^~]
 do
     export $(basename $env_snippet)="$(eval "echo $(cat $env_snippet)")"
 done
@@ -33,7 +33,7 @@ done
 [ -n "$ZSH_THEME" ] && antigen theme "$ZSH_THEME"
 antigen apply
 # .zsh.d/rc
-for zshrc_snipplet in ${ZSHD}/rc/S[0-9][0-9]*[^~]
+for zshrc_snippet in ${ZSHD}/rc/S[0-9][0-9]*[^~]
 do
     source $zshrc_snippet
 done
