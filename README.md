@@ -5,7 +5,7 @@ Nevertheless, feel free to use it as you wish. You will need to customize it for
 
 First, edit the zshrc file, find the line that sources antigen and point it to your antigen install path.
 
-Now, move all files in the env, rc and antigen_bundles directories away to a review directory (in your temp path).
+Now, move all files in the env, alias, rc and antigen_bundles directories away to a review directory (in your temp path).
 
 Symlink ~/.zshrc to the zshrc file, and restart zsh.
 
