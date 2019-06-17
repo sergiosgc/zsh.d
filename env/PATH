@@ -1,1 +1,1 @@
-/home/sergio/Projects/Portugalmail/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:$PATH
+/home/sergio/Projects/Sooma/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:/home/sergio/.go/bin:$PATH
