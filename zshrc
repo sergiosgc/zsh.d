@@ -1,3 +1,5 @@
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle :omz:plugins:ssh-agent identities id_rsa
 export ZSH=~/.antigen/bundles/robbyrussell/oh-my-zsh
 # .zsh.d/functions
 ZSHD=~/.zsh
