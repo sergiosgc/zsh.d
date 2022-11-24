@@ -1,1 +1,1 @@
-/home/sergio/.local/bin:/home/sergio/Projects/Sooma/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:/home/sergio/.go/bin:$PATH
+/home/sergio/.local/bin:/home/sergio/Projects/Sooma/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:/home/sergio/.go/bin:/home/sergio/.cargo/bin:$PATH
