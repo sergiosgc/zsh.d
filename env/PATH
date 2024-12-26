@@ -1,1 +1,1 @@
-/home/sergio/.local/bin:/home/sergio/Projects/Sooma/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:/home/sergio/.go/bin:/home/sergio/.cargo/bin:$PATH
+/home/sergio/.local/bin:/home/sergio/Projects/Sooma/Ansible/inventory:/opt/android-sdk-linux/platform-tools/:/home/sergio/bin:/home/sergio/.go/bin:/home/sergio/.cargo/bin:/opt/zig-linux-x86_64-0.14.0-dev.2384+cbc05e0b1/:$PATH
