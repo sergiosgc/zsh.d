@@ -1,0 +1,1 @@
+f() { tmux at -t $1 || tmux new -s $1 }; f
