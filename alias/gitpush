@@ -1,0 +1,1 @@
+git push && git push --tags && github push github $(git branch --show-current) && github push github --tags
