@@ -1,4 +1,5 @@
 ZSHD=~/.zsh.d
+fpath=(${ZSHD}/autocomplete ${ZSHD}/functions $fpath)
 for env_snippet in ${ZSHD}/env/*[^~]
 do
     export $(basename $env_snippet)="$(eval "echo $(cat $env_snippet)")"
@@ -12,7 +13,6 @@ done
 [ -n "$ZSH_THEME" ] && antigen theme "$ZSH_THEME"
 antigen apply
 
-fpath=(${ZSHD}/autocomplete ${ZSHD}/functions $fpath)
 for zshrc_snippet in ${ZSHD}/rc/S[0-9][0-9]*[^~]
 do
     source $zshrc_snippet
