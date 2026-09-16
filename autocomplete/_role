@@ -1,3 +1,5 @@
+#compdef role
+
 _role() {
   local cmd=$words[1]
   local script_path
@@ -27,4 +29,4 @@ _role() {
       ;;
   esac
 }
-compdef _role role
+_role "$@"

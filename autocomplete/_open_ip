@@ -1,6 +1,7 @@
+#compdef open_ip
 _open_ip() {
   local -a hosts
   hosts=(${(f)"$(awk '!/^#/ && NF { for (i=2; i<=NF; i++) print $i }' /etc/hosts | sort -u)"})
   compadd -a hosts
 }
-compdef _open_ip open_ip
+_open_ip "$@"

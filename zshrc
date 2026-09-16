@@ -13,10 +13,6 @@ done
 antigen apply
 
 fpath=(${ZSHD}/autocomplete ${ZSHD}/functions $fpath)
-for f in ${ZSHD}/autocomplete/*[^~] ${ZSHD}/functions/*[^~]
-do
-    autoload $f
-done
 for zshrc_snippet in ${ZSHD}/rc/S[0-9][0-9]*[^~]
 do
     source $zshrc_snippet
