@@ -1,1 +1,1 @@
-dig +noall +answer
+dig +noall +answer +authority

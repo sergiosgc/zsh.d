@@ -4,7 +4,7 @@ do
     export $(basename $env_snippet)="$(eval "echo $(cat $env_snippet)")"
 done
 source ${ZSHD}/antigen.zsh
-antigen use oh-my-zsh
+antigen init ${ZSHD}/antigenrc
 for bundle in ${ZSHD}/antigen_bundles/*[^~]
 do
     antigen bundle "$(basename "$bundle" | sed 's/\\/\//')"
@@ -26,14 +26,4 @@ do
     alias $(basename $alias_snippet)="$(cat $alias_snippet)"
 done
 
-
-
-#zstyle :omz:plugins:ssh-agent agent-forwarding on
-#zstyle :omz:plugins:ssh-agent identities id_rsa
-#export ZSH=~/.antigen/bundles/robbyrussell/oh-my-zsh
-## .zsh.d/functions
-#if [ ! -e "$ZSHD" ]; then ZSHD=~/.zsh.d; fi
-#
-## .zsh.d/env
-## .zsh.d/alias
-## .zsh.d/rc
+export PATH="$PATH:/home/sergio/.local/bin"

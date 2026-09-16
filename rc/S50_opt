@@ -1,1 +1,2 @@
 unsetopt share_history
+unsetopt AUTO_LIST

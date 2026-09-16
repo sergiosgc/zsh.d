@@ -1,0 +1,30 @@
+_role() {
+  local cmd=$words[1]
+  local script_path
+
+  if [[ $cmd == */* ]]; then
+    # invoked with a path, e.g. ./bin/role or ../Ansible/bin/role
+    script_path=${cmd:A}
+  else
+    # invoked by bare name, e.g. "role" found via $PATH
+    script_path=${$(command -v $cmd):A}
+  fi
+
+  local script_dir=${script_path:h}
+
+  case $CURRENT in
+    2)
+      # First argument: role names
+      local -a roles
+      roles=(${(f)"$(find "$script_dir/../roles" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)"})
+      compadd -a roles
+      ;;
+    3)
+      # Second argument: host names
+      local -a hosts
+      hosts=(${(f)"$("$script_dir/../inventory/sqlite.inventory" host list)"})
+      compadd -a hosts
+      ;;
+  esac
+}
+compdef _role role
